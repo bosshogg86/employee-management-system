@@ -6,25 +6,28 @@ const path = require("path");
 const Employee = require("./lib/Employee");
 const Role = require("./lib/Role");
 const Department = require("./lib/Department");
+const { questions } = require("./lib/questions");
 
-let connection;
-if (process.env.NODE_ENV === "production") {
-  connection = mysql.createConnection({
-    host: "localhost",
-    user: process.env.USER,
-    password: process.env.PASSWORD,
-    database: process.env.DATABASE,
-  });
-} else {
-  connection = mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    password: "password",
-    database: "employeeDB",
-  });
-}
+const connection = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "password",
+  database: "employeeDB",
+});
+
 connection.connect(err => {
   if (err) throw err;
   console.log("connected");
-  //   runSearch();
+  init();
 });
+
+const startPrompt = () => inquirer.prompt(questions.start);
+
+const init = async () => {
+  try {
+    const res = await startPrompt();
+    console.log(res);
+  } catch (err) {
+    console.log(err);
+  }
+};
