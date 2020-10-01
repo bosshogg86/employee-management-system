@@ -4,7 +4,7 @@ const {
   addDepartment,
 } = require('../../../controllers/departmentController');
 
-// /api/department prepended to every route
+// /api/departments prepended to every route
 router.route('/').get(getDepartments).post(addDepartment);
 
 module.exports = router;
