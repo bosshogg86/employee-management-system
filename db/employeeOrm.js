@@ -3,8 +3,8 @@ const connection = require('../config/connection');
 
 const fetchEmployees = async () => {
   try {
-    const [rows] = await connection.query(getAllEmployees);
-    return rows;
+    return await connection.query(getAllEmployees);
+    // return rows;
   } catch (e) {
     throw new Error(e);
   }

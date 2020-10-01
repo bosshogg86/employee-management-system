@@ -1,43 +1,66 @@
-const express = require('express');
-const routes = require('./routes');
+const inquirer = require('inquirer');
+const { start } = require('./lib/questions');
+const {
+  viewEmployees,
+  viewDepartments,
+  viewRoles,
+  addEmployee,
+  addDepartment,
+  addRole,
+  updateEmployeeRole,
+  exit,
+} = require('./lib/queries');
 
-const app = express();
+const startPrompt = () => inquirer.prompt(start);
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(routes);
-app.listen(3000, () => {
-  console.log('Server listening on PORT http://localhost:3000');
-});
+const init = async () => {
+  try {
+    const { selection } = await startPrompt();
+    switch (selection) {
+      case 'View all employees':
+        viewEmployees();
+        break;
+      case 'View all departments':
+        viewDepartments();
+        break;
+      case 'View all roles':
+        viewRoles();
+        break;
+      // case 'View all employees by department':
+      //   break;
+      // case 'View all employees by manager':
+      //   break;
+      case 'Add employee':
+        addEmployee();
+        break;
+      case 'Add department':
+        addDepartment();
+        break;
+      case 'Add role':
+        addRole();
+        break;
+      case 'Update employee role':
+        updateEmployeeRole();
+        break;
+      case 'Exit':
+        exit();
+        break;
+      // case 'Update employee manager':
+      //   break;
+      // case 'Remove employee':
+      //   break;
+      // case 'Remove department':
+      //   break;
+      // case 'Remove role':
+      //   break;
+      default:
+        connection.end();
+    }
 
-// const getDepartments = () => {
-//   const query = 'SELECT * FROM departments;';
-//   connection.query(query, (err, res) => {
-//     if (err) throw err;
-//     console.table(res);
-//   });
-// };
+    //const
+  } catch (err) {
+    console.log(err);
+  }
+};
 
-// const getRoles = () => {
-//   const query = 'SELECT * FROM roles;';
-//   connection.query(query, (err, res) => {
-//     if (err) throw err;
-//     console.table(res);
-//   });
-// };
-
-// const getEmployees = () => {
-//   const query = 'SELECT * FROM employees;';
-//   connection.query(query, (err, res) => {
-//     if (err) throw err;
-//     console.table(res);
-//   });
-// };
-
-// const getEmployeesByManager = () => {
-//   const query = 'SELECT * FROM employees ORDER BY manager_id;';
-//   connection.query(query, (err, res) => {
-//     if (err) throw err;
-//     console.table(res);
-//   });
-// };
+init();

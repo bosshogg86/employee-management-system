@@ -1,0 +1,4 @@
+-- insert into dept
+--insert into roles----------------------------------------------------------------
+-- insert into employees
+-- then update employee manager
