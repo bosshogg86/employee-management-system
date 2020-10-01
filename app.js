@@ -27,7 +27,40 @@ const init = async () => {
   try {
     const res = await startPrompt();
     console.log(res);
+    switch (res.selection) {
+      case "View all employees":
+        viewEmployees();
+        break;
+      case "View all employees by department":
+        break;
+      case "View all employees by manager":
+        break;
+      case "Add employee":
+        break;
+      case "Remove employee":
+        break;
+      case "Update employee role":
+        break;
+      case "Update employee manager":
+        break;
+      case "View all roles":
+        break;
+      case "Add role":
+        break;
+      case "Remove role":
+        break;
+      default:
+        connection.end();
+    }
   } catch (err) {
     console.log(err);
   }
+};
+
+const viewEmployees = () => {
+  const query = "SELECT * FROM employees;";
+  connection.query(query, (err, response) => {
+    if (err) throw err;
+    console.table(response);
+  });
 };
