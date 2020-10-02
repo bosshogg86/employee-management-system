@@ -20,41 +20,37 @@ const init = async () => {
       case 'View all employees':
         viewEmployees();
         break;
-      case 'View all departments':
-        viewDepartments();
-        break;
-      case 'View all roles':
-        viewRoles();
-        break;
-      // case 'View all employees by department':
-      //   break;
       // case 'View all employees by manager':
       //   break;
       case 'Add employee':
-        addEmployee();
-        break;
-      case 'Add department':
-        addDepartment();
-        break;
-      case 'Add role':
-        addRole();
+        // addEmployee();
         break;
       case 'Update employee role':
-        updateEmployeeRole();
+        // updateEmployeeRole();
+        break;
+      // case 'Remove employee':
+      //   break;
+      case 'View all roles':
+        // viewRoles();
+        break;
+      case 'Add role':
+        // addRole();
+        break;
+      case 'View all departments':
+        viewDepartments();
+        break;
+      case 'Add department':
+        // addDepartment();
         break;
       case 'Exit':
         exit();
         break;
       // case 'Update employee manager':
       //   break;
-      // case 'Remove employee':
-      //   break;
       // case 'Remove department':
       //   break;
       // case 'Remove role':
       //   break;
-      default:
-        connection.end();
     }
 
     //const
