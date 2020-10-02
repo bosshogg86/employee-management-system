@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const { questions } = require('./lib/questions');
+const questions = require('./lib/questions');
 const {
   viewEmployees,
   viewDepartments,
