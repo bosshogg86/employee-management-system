@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const { start } = require('./lib/questions');
+const { questions } = require('./lib/questions');
 const {
   viewEmployees,
   viewDepartments,
@@ -11,7 +11,7 @@ const {
   exit,
 } = require('./lib/queries');
 
-const startPrompt = () => inquirer.prompt(start);
+const startPrompt = () => inquirer.prompt(questions.start);
 
 const init = async () => {
   try {
@@ -23,7 +23,7 @@ const init = async () => {
       // case 'View all employees by manager':
       //   break;
       case 'Add employee':
-        // addEmployee();
+        addEmployee();
         break;
       case 'Update employee role':
         // updateEmployeeRole();
@@ -31,7 +31,7 @@ const init = async () => {
       // case 'Remove employee':
       //   break;
       case 'View all roles':
-        // viewRoles();
+        viewRoles();
         break;
       case 'Add role':
         // addRole();
