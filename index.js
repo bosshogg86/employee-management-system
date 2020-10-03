@@ -34,13 +34,13 @@ const init = async () => {
         viewRoles();
         break;
       case 'Add role':
-        // addRole();
+        addRole();
         break;
       case 'View all departments':
         viewDepartments();
         break;
       case 'Add department':
-        // addDepartment();
+        addDepartment();
         break;
       case 'Exit':
         exit();
