@@ -11,7 +11,7 @@ const {
   exit,
 } = require('./lib/queries');
 
-const startPrompt = () => inquirer.prompt(questions.start);
+const startPrompt = () => inquirer.prompt(questions.menu);
 
 const init = async () => {
   try {
@@ -26,7 +26,7 @@ const init = async () => {
         addEmployee();
         break;
       case 'Update employee role':
-        // updateEmployeeRole();
+        updateEmployeeRole();
         break;
       // case 'Remove employee':
       //   break;
