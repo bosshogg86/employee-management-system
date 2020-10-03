@@ -23,6 +23,6 @@ VALUES ('James', 'Mileta', 4),
   ('Eric', 'Sanchagrin', 4),
   ('Kyle', 'Farnham', 7);
 UPDATE Employees
-  LEFT JOIN RSoles ON Employees.role_id = Roles.id
+  LEFT JOIN Roles ON Employees.role_id = Roles.id
 SET manager_id = 9
 WHERE department_id < 5;
