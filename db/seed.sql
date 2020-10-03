@@ -1,10 +1,10 @@
-INSERT INTO departments (name)
+INSERT INTO Departments (name)
 VALUES ('Audio'),
   ('Video'),
   ('Camera'),
   ('Tape'),
   ('Production');
-INSERT INTO roles (title, salary, department_id)
+INSERT INTO Roles (title, salary, department_id)
 VALUES ('A1', 120000, 1),
   ('A2', 80000, 1),
   ('V1', 120000, 2),
@@ -12,7 +12,7 @@ VALUES ('A1', 120000, 1),
   ('EVS', 120000, 4),
   ('RO', 100000, 4),
   ('Director', 200000, 5);
-INSERT INTO employees (firstName, lastName, role_id)
+INSERT INTO Employees (firstName, lastName, role_id)
 VALUES ('James', 'Mileta', 4),
   ('James', 'Duysen', 4),
   ('Steve', 'Lowe', 5),
@@ -22,7 +22,7 @@ VALUES ('James', 'Mileta', 4),
   ('Brandon', 'Collins', 3),
   ('Eric', 'Sanchagrin', 4),
   ('Kyle', 'Farnham', 7);
-UPDATE employees
-  LEFT JOIN roles ON employees.role_id = roles.id
-SET manager_id = 7
+UPDATE Employees
+  LEFT JOIN RSoles ON Employees.role_id = Roles.id
+SET manager_id = 9
 WHERE department_id < 5;

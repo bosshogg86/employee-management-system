@@ -1,23 +1,26 @@
-DROP DATABASE IF EXISTS employeeDB;
-CREATE DATABASE employeeDB;
-USE employeeDB;
-CREATE TABLE departments (
+DROP DATABASE IF EXISTS emsDB;
+CREATE DATABASE emsDB;
+USE emsDB;
+CREATE TABLE Departments (
     id INT AUTO_INCREMENT NOT NULL,
     name VARCHAR (30) NOT NULL,
     PRIMARY KEY (id)
 );
-CREATE TABLE roles (
+CREATE TABLE Roles (
     id INT AUTO_INCREMENT NOT NULL,
     title VARCHAR (30) NOT NULL,
     salary DECIMAL (19, 4) NOT NULL,
     department_id INT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (department_id) REFERENCES Departments(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
-CREATE TABLE employees (
+CREATE TABLE Employees (
     id INT AUTO_INCREMENT NOT NULL,
     firstName VARCHAR (30) NOT NULL,
     lastName VARCHAR (30) NOT NULL,
     role_id INT NULL,
     manager_id INT NULL,
-    PRIMARY KEY (id)
+    PRIMARY KEY (id),
+    FOREIGN KEY (role_id) REFERENCES Roles(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (manager_id) REFERENCES Employees(id) ON DELETE CASCADE ON UPDATE CASCADE
 );
