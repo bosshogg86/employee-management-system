@@ -9,6 +9,7 @@ const {
   addRole,
   updateEmployeeRole,
   exit,
+  getEmployeesArr,
 } = require('./lib/queries');
 
 const startPrompt = () => inquirer.prompt(questions.menu);
