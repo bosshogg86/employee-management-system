@@ -2,6 +2,7 @@ const inquirer = require('inquirer');
 const {
   menu,
   viewEmployees,
+  viewEmployeesByManager,
   viewDepartments,
   viewRoles,
   addEmployee,
@@ -19,8 +20,9 @@ const init = async () => {
       case 'View all employees':
         viewEmployees();
         break;
-      // case 'View all employees by manager':
-      //   break;
+      case 'View all employees by manager':
+        viewEmployeesByManager();
+        break;
       case 'Add employee':
         addEmployee();
         break;
