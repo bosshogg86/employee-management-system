@@ -1,21 +1,20 @@
 const inquirer = require('inquirer');
-const questions = require('./lib/questions');
 const {
+  menu,
   viewEmployees,
   viewDepartments,
   viewRoles,
   addEmployee,
+  deleteEmployee,
   addDepartment,
   addRole,
   updateEmployeeRole,
   exit,
 } = require('./lib/queries');
 
-const startPrompt = () => inquirer.prompt(questions.menu);
-
 const init = async () => {
   try {
-    const { selection } = await startPrompt();
+    const { selection } = await menu();
     switch (selection) {
       case 'View all employees':
         viewEmployees();
@@ -28,29 +27,30 @@ const init = async () => {
       case 'Update employee role':
         updateEmployeeRole();
         break;
-      // case 'Remove employee':
+      // case 'Update employee manager':
       //   break;
+      case 'Delete employee':
+        deleteEmployee();
+        break;
       case 'View all roles':
         viewRoles();
         break;
       case 'Add role':
         addRole();
         break;
+      // case 'Delete role':
+      //   break;
       case 'View all departments':
         viewDepartments();
         break;
       case 'Add department':
         addDepartment();
         break;
+      // case 'Delete department':
+      //   break;
       case 'Exit':
         exit();
         break;
-      // case 'Update employee manager':
-      //   break;
-      // case 'Remove department':
-      //   break;
-      // case 'Remove role':
-      //   break;
     }
 
     //const
