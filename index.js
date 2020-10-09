@@ -82,7 +82,7 @@ const viewEmployees = async () => {
 
 const viewEmployeesByManager = async () => {
   let managers = await connection.query(
-    'SELECT id, CONCAT (`firstName`, " ", `lastName`) AS name FROM employees'
+    'SELECT id, CONCAT(`firstName`, " ", `lastName`) AS name FROM employees WHERE id IN (SELECT manager_id FROM employees);'
   );
   managers = managers.map(row => {
     const manager = { name: row.name, value: row.id };
@@ -95,7 +95,7 @@ const viewEmployeesByManager = async () => {
     choices: managers,
   });
   const res = await connection.query(
-    `SELECT employees.id, manager_id, firstName, lastName FROM employees LEFT JOIN roles ON manager_id = employees.id WHERE manager_id = ${byManager};`
+    `SELECT id, manager_id, firstName, lastName FROM employees WHERE manager_id = ${byManager};`
   );
   console.table(res);
   init();

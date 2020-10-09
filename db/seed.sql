@@ -28,9 +28,9 @@ SET manager_id = 9
 WHERE title IN ('Camera Operator', 'Video', 'EVS', 'A1');
 UPDATE employees
   LEFT JOIN roles ON employees.role_id = roles.id
-SET manager_id = 5
+SET manager_id = 3
 WHERE title = 'RO';
 UPDATE employees
   LEFT JOIN roles ON employees.role_id = roles.id
-SET manager_id = 1
+SET manager_id = 5
 WHERE title = 'A2';
