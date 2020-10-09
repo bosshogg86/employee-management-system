@@ -17,6 +17,7 @@ const menu = () =>
       'Add role',
       'Delete role',
       'View departments',
+      'View department budget',
       'Add department',
       'Delete department',
       'Exit',
@@ -62,6 +63,9 @@ const init = async () => {
         break;
       case 'Delete department':
         deleteDept();
+        break;
+      case 'View department budget':
+        viewDepartmentBudget();
         break;
       case 'Exit':
         exit();
@@ -323,6 +327,29 @@ const deleteDept = async () => {
   });
   connection.query(`DELETE FROM departments WHERE id=${deleteDept};`);
   console.log('Department deleted');
+  init();
+};
+
+const viewDepartmentBudget = async () => {
+  let departments = await connection.query(
+    'SELECT department, SUM(salary) AS budget, department_id FROM employees LEFT JOIN roles ON employees.role_id = roles.id LEFT JOIN departments ON roles.department_id = departments.id GROUP BY department_id;'
+  );
+  departments = departments.map(row => {
+    const department = { name: row.department, value: row.department_id };
+    return department;
+  });
+  const { viewBudget } = await inquirer.prompt([
+    {
+      type: 'list',
+      name: 'viewBudget',
+      message: `Which department's budget would you like to view?`,
+      choices: departments,
+    },
+  ]);
+  const budget = await connection.query(
+    `SELECT * FROM (SELECT department, SUM(salary) AS Budget, department_id FROM employees LEFT JOIN roles ON employees.role_id = roles.id LEFT JOIN departments ON roles.department_id = departments.id GROUP BY department_id) s WHERE department_id = ${viewBudget}`
+  );
+  console.table(budget);
   init();
 };
 
