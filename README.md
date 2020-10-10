@@ -48,4 +48,6 @@ If you have any questions you can contact me direct at <jeffhogg86@gmail.com>. C
 
 ## Demo
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Q0OTzku_nSs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+https://youtu.be/Q0OTzku_nSs
+
+[![App Demo](Assets/EMS.png)](https://youtu.be/Q0OTzku_nSs 'EMS Demo')
